@@ -35,8 +35,11 @@ class VendorAssetManager
 
     public static function registerMultiple(array $assets)
     {
-        foreach ($assets as $settings) {
-            call_user_func_array([self::class, 'register'], $settings);
+        foreach ($assets as $assetHandle => $assetTypes) {
+            foreach ($assetTypes as $assetType => $assetSettings) {
+                array_splice($assetSettings, 1, 0, $assetHandle);
+                call_user_func_array([self::class, 'register'], $assetSettings);
+            }
         }
     }
 
