@@ -1,0 +1,15 @@
+{
+    "name": "xanweb/c5-ext-asset",
+    "description": "Handle External Assets for Concrete5",
+    "keywords": ["concrete5", "concrete5-v8", "assets"],
+    "type": "library",
+    "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Xanweb\\ExtAsset\\": "src/"
+        }
+    },
+    "support": {
+        "source": "https://github.com/xanweb/c5-ext-asset"
+    }
+}
