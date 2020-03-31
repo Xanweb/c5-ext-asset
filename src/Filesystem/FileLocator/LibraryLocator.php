@@ -3,6 +3,7 @@ namespace Xanweb\ExtAsset\Filesystem\FileLocator;
 
 use Concrete\Core\Filesystem\FileLocator\AbstractLocation;
 use Symfony\Component\Routing\Generator\UrlGenerator;
+use Concrete\Core\Support\Facade\Application;
 
 defined('VENDOR_DIR') or define('VENDOR_DIR', str_replace(DIRECTORY_SEPARATOR, '/', dirname(__DIR__, 5)));
 
@@ -20,7 +21,8 @@ class LibraryLocator extends AbstractLocation
     public function __construct($libraryName)
     {
         $this->path = VENDOR_DIR . '/' . $libraryName;
-        $this->url = '/' . ltrim(UrlGenerator::getRelativePath(DIR_BASE . '/', $this->path), '/');
+        $this->url = Application::getApplicationRelativePath();
+        $this->url .= '/' . ltrim(UrlGenerator::getRelativePath(DIR_BASE . '/', $this->path), '/');
     }
 
     public function getCacheKey()
